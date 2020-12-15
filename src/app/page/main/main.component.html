@@ -1,9 +1,15 @@
 <div class="addListArea">
-    <input type="text" [formControl]="addAreaControl" #list>
-    <button (click)="addList(list.value)">追加</button>
+    <input type="text" class="todo-input" [formControl]="addAreaControl" #list>
+    <button class="add-button" (click)="addList(list.value)">追加</button>
 </div>
 <div class="showListArea">
     <ul>
-        <li *ngFor="let list of lists">{{list}}</li>
+        <li class="todo-lists" *ngFor="let list of lists">
+            <div>
+                <input type="checkbox" id="todo-checkbox" name="todo-checkbox" #check>
+                <label for="todo-checkbox">{{list}}</label>
+                <a class="todo-detail">詳細</a>
+            </div>
+        </li>
     </ul>
 </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormBuilder,} from '@angular/forms';
+import { FormControl, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'todo-main',
