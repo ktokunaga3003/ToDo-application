@@ -1,5 +1,9 @@
-<div>
+<div class="addListArea">
+    <input type="text" [formControl]="addAreaControl" #list>
+    <button (click)="addList(list.value)">追加</button>
+</div>
+<div class="showListArea">
     <ul>
-        <li>test</li>
+        <li *ngFor="let list of lists">{{list}}</li>
     </ul>
 </div>
