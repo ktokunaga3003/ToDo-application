@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './page/main/main.component';
 import { HeaderComponent } from './component/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RepeatNumPipe } from './pipe/repeat-num/repeat-num.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     HeaderComponent,
+    RepeatNumPipe,
   ],
   imports: [
     BrowserModule,

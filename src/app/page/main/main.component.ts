@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
+
+interface toDoList {
+  title: string;
+  detail?: string;
+  date?: string;
+}
 
 @Component({
   selector: 'todo-main',
@@ -8,8 +14,8 @@ import { FormControl, FormBuilder } from '@angular/forms';
 })
 export class MainComponent implements OnInit {
 
-  addAreaControl : FormControl;
-  lists: string[] = [];
+  addAreaForm : FormGroup;
+  lists: toDoList[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -17,13 +23,26 @@ export class MainComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.addAreaControl = this.formBuilder.control('');
+    this.addAreaForm = this.formBuilder.group({
+      title: [''],
+      detail: [''],
+      month: [''],
+      day: [''],
+    });
   }
 
-  addList(list: string) {
-    if (!list) return;
+  addList() {
+    const title: string = this.addAreaForm.controls['title'].value;
+    const detail: string = this.addAreaForm.controls['detail'].value
+    const month: string = this.addAreaForm.controls['month'].value.toString() + '月';
+    const day: string = this.addAreaForm.controls['day'].value.toString() + '日';
+
+    const list: toDoList = {title: title, detail: detail, date: month+day};
+
+    if (!list.title) return;
+
     this.lists.push(list);
-    this.addAreaControl.reset();
+    this.addAreaForm.reset();
   }
 
 }

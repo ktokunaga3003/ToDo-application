@@ -1,14 +1,41 @@
-<div class="addListArea">
-    <input type="text" class="todo-input" [formControl]="addAreaControl" #list>
-    <button class="add-button" (click)="addList(list.value)">追加</button>
-</div>
+<form [formGroup]="addAreaForm">
+    <div class="addlist-area">
+        <div class="todo-title">
+            <input type="text" class="title" formControlName="title">
+        </div>
+        <div class="todo-detail">
+            <textarea name="todo-detail" id="detail" placeholder="detail" formControlName="detail"></textarea>
+        </div>
+        <div class="todo-date">
+            <span>期限：</span>
+            <select name="month" formControlName="month">
+                <ng-container *ngFor="let n of 12 | repeatNum; index as i">
+                    <option [ngValue]="i+1">{{i+1}}月</option>
+                </ng-container>
+            </select>
+            <select name="day" formControlName="day">
+                <ng-container *ngFor="let n of 31 | repeatNum; index as i">
+                    <option [ngValue]="i+1">{{i+1}}日</option>
+                </ng-container>
+            </select>           
+        </div>
+        <div class="add-button-area">
+            <button class="add-button" (click)="addList()">追加</button>
+        </div>
+    </div>
+</form>
 <div class="showListArea">
     <ul>
         <li class="todo-lists" *ngFor="let list of lists">
-            <div>
+            <div class="list-title">
                 <input type="checkbox" id="todo-checkbox" name="todo-checkbox" #check>
-                <label for="todo-checkbox">{{list}}</label>
-                <a class="todo-detail">詳細</a>
+                <label for="todo-checkbox">{{list.title}}</label>
+            </div>
+            <div class="list-detail">
+                <span>{{list.detail}}</span>
+            </div>
+            <div class="list-date">
+                <span>{{list.date}}</span>
             </div>
         </li>
     </ul>

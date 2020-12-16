@@ -1,12 +1,23 @@
-.todo-input {
+.title {
     border: 1px solid;
     border-radius: 4px;
     height: 27px;
+    width: 50%;
     margin-left: 5px;
 }
 
+.todo-date {
+    margin-top: 3px;
+    margin-left: 5px;
+}
+
+.add-button-area {
+    width: 50%;
+    margin-top: 5px;
+}
+
 .add-button {
-    margin-left: 6px;
+    margin-left: 5px;
 }
 
 ul {
@@ -16,6 +27,7 @@ ul {
 .todo-lists {
     list-style-type: none;
     margin: 5px;
+    border: 1px groove; 
 }
 
 #todo-checkbox {
@@ -28,15 +40,22 @@ label {
     margin-bottom: 1rem;   
 }
 
-.todo-detail {
-    margin-left: 8px;
-    padding: 0 5px 0 5px;
-    font-size: 1.2rem;
-    color: white;
-    background-color: #4dc295;
+#detail {
+    margin-left: 5px;
+    margin-top: 3px;
+    border: 1px solid;
+    border-radius: 4px;
+    width: 50%;
+
 }
 
-.preview {
-    margin-top: 10px;
-    text-align: center;
+.list-detail {
+    margin-left: 22.6px;
+    margin-top: 4px;
+    font-size: 1.2rem;
+}
+
+.list-date {
+    margin-left: 22.6px;
+    margin-top: 4px; 
 }
