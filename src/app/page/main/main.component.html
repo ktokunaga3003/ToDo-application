@@ -1,23 +1,22 @@
 <form [formGroup]="addAreaForm">
     <div class="addlist-area">
         <div class="todo-title">
-            <input type="text" class="title" formControlName="title">
+            <div class="label">
+                <span>タイトル：</span>
+            </div>
+            <input type="text" class="todo-input title" formControlName="title">
         </div>
         <div class="todo-detail">
-            <textarea name="todo-detail" id="detail" placeholder="detail" formControlName="detail"></textarea>
+            <div class="label">
+                <span>詳細：</span>
+            </div>
+            <textarea name="todo-detail" class="todo-input detail" formControlName="detail"></textarea>
         </div>
         <div class="todo-date">
-            <span>期限：</span>
-            <select name="month" formControlName="month">
-                <ng-container *ngFor="let n of 12 | repeatNum; index as i">
-                    <option [ngValue]="i+1">{{i+1}}月</option>
-                </ng-container>
-            </select>
-            <select name="day" formControlName="day">
-                <ng-container *ngFor="let n of 31 | repeatNum; index as i">
-                    <option [ngValue]="i+1">{{i+1}}日</option>
-                </ng-container>
-            </select>           
+            <div class="label">
+                <span>期限：</span>
+            </div>
+            <input type="date" class="todo-input date" formControlName="date">          
         </div>
         <div class="add-button-area">
             <button class="add-button" (click)="addList()">追加</button>
@@ -35,7 +34,7 @@
                 <span>{{list.detail}}</span>
             </div>
             <div class="list-date">
-                <span>{{list.date}}</span>
+                <span>{{showListDate(list.date)}}</span>
             </div>
         </li>
     </ul>

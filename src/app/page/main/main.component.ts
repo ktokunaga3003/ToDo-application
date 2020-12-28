@@ -13,9 +13,12 @@ interface ToDoList {
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-
+  titleStr = 'title';
+  detailStr = 'detail';
+  dateStr = 'date';
   addAreaForm: FormGroup;
   lists: ToDoList[] = [];
+  today = new Date();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -25,22 +28,25 @@ export class MainComponent implements OnInit {
     this.addAreaForm = this.formBuilder.group({
       title: [''],
       detail: [''],
-      month: [''],
-      day: [''],
+      date: [''],
     });
+    this.setToday(this.today);
+  }
+
+  setToday(today: Date): void {
+    const dateControl = this.addAreaForm.controls[this.dateStr];
+    const year = (today.getFullYear());
+    const month = ('0' + (today.getMonth() + 1)).slice(-2);
+    const day = ('0' + today.getDate()).slice(-2);
+
+    dateControl.setValue(year + '-' + month + '-' + day);
   }
 
   addList(): void {
-    const title = 'title';
-    const detail = 'detail';
-    const month = 'month';
-    const day = 'day';
-    const titleValue: string = this.addAreaForm.controls[title].value;
-    const detailValue: string = this.addAreaForm.controls[detail].value;
-    const monthValue: string = this.addAreaForm.controls[month].value.toString() + '月';
-    const dayValue: string = this.addAreaForm.controls[day].value.toString() + '日';
-
-    const list: ToDoList = {title: titleValue, detail: detailValue, date: monthValue + dayValue};
+    const titleValue: string = this.addAreaForm.controls[this.titleStr].value;
+    const detailValue: string = this.addAreaForm.controls[this.detailStr].value;
+    const dateValue: string = this.addAreaForm.controls[this.dateStr].value;
+    const list: ToDoList = {title: titleValue, detail: detailValue, date: dateValue};
 
     if (!list.title) {
       return;
@@ -48,6 +54,11 @@ export class MainComponent implements OnInit {
 
     this.lists.push(list);
     this.addAreaForm.reset();
+    this.setToday(this.today);
+  }
+
+  showListDate(date: string): string {
+    return date.slice(0, 4) + '年/' + date.slice(5, 7) + '月/' + date.slice(8) + '日';
   }
 
 }
