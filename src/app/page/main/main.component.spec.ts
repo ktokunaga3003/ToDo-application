@@ -27,28 +27,32 @@ describe('MainComponent', () => {
   });
 
   it('addListでlistが追加されているかどうか', () => {
-    const title = component.addAreaForm.controls['title'];
-    const detail = component.addAreaForm.controls['detail'];
-    const month = component.addAreaForm.controls['month'];
-    const day = component.addAreaForm.controls['day'];
+    const title = 'title';
+    const detail = 'detail';
+    const month = 'month';
+    const day = 'day';
+    const titleControl = component.addAreaForm.controls[title];
+    const detailControl = component.addAreaForm.controls[detail];
+    const monthControl = component.addAreaForm.controls[month];
+    const dayControl = component.addAreaForm.controls[day];
 
     // titleが未入力の場合
-    detail.setValue('test');
-    month.setValue(1);
-    day.setValue(1);
+    detailControl.setValue('test');
+    monthControl.setValue(1);
+    dayControl.setValue(1);
     component.addList();
     expect(component.lists.length).toEqual(0);
-    expect(detail.value).toBeTruthy();
-    expect(month.value).toBeTruthy();
-    expect(day.value).toBeTruthy();
+    expect(detailControl.value).toBeTruthy();
+    expect(monthControl.value).toBeTruthy();
+    expect(dayControl.value).toBeTruthy();
 
     // titleに「testTitle」という値を追加した場合
-    title.setValue('testValue');
+    titleControl.setValue('testValue');
     component.addList();
     expect(component.lists.length).toEqual(1);
-    expect(title.value).toBeFalsy();
-    expect(detail.value).toBeFalsy();
-    expect(month.value).toBeFalsy();
-    expect(day.value).toBeFalsy();
+    expect(titleControl.value).toBeFalsy();
+    expect(detailControl.value).toBeFalsy();
+    expect(monthControl.value).toBeFalsy();
+    expect(dayControl.value).toBeFalsy();
   });
 });

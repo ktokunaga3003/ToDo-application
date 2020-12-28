@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
-interface toDoList {
+interface ToDoList {
   title: string;
   detail?: string;
   date?: string;
@@ -14,12 +14,11 @@ interface toDoList {
 })
 export class MainComponent implements OnInit {
 
-  addAreaForm : FormGroup;
-  lists: toDoList[] = [];
+  addAreaForm: FormGroup;
+  lists: ToDoList[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
-    
   ) { }
 
   ngOnInit(): void {
@@ -31,15 +30,21 @@ export class MainComponent implements OnInit {
     });
   }
 
-  addList() {
-    const title: string = this.addAreaForm.controls['title'].value;
-    const detail: string = this.addAreaForm.controls['detail'].value
-    const month: string = this.addAreaForm.controls['month'].value.toString() + '月';
-    const day: string = this.addAreaForm.controls['day'].value.toString() + '日';
+  addList(): void {
+    const title = 'title';
+    const detail = 'detail';
+    const month = 'month';
+    const day = 'day';
+    const titleValue: string = this.addAreaForm.controls[title].value;
+    const detailValue: string = this.addAreaForm.controls[detail].value;
+    const monthValue: string = this.addAreaForm.controls[month].value.toString() + '月';
+    const dayValue: string = this.addAreaForm.controls[day].value.toString() + '日';
 
-    const list: toDoList = {title: title, detail: detail, date: month+day};
+    const list: ToDoList = {title: titleValue, detail: detailValue, date: monthValue + dayValue};
 
-    if (!list.title) return;
+    if (!list.title) {
+      return;
+    }
 
     this.lists.push(list);
     this.addAreaForm.reset();

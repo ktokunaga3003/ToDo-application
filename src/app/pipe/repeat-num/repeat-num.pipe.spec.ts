@@ -1,5 +1,4 @@
 import { RepeatNumPipe } from './repeat-num.pipe';
-import { pipe } from 'rxjs';
 
 describe('RepeatNumPipe', () => {
   it('create an instance', () => {
