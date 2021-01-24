@@ -1,0 +1,63 @@
+.label {
+    margin-left: 5px;
+}
+
+.todo-input {
+    margin-left: 5px;
+    margin-bottom: .3rem;
+    border: 1px solid;
+    border-radius: 4px;
+    width: 50%;
+}
+
+.title {
+    height: 27px;
+}
+
+.detail {
+    height: 60px;
+}
+
+.date {
+    padding: 2px;
+}
+
+.add-button-area {
+    margin-top: 10px;
+}
+
+.add-button {
+    margin-left: 5px;
+    width: 50%;
+    padding: 0%;
+}
+
+ul {
+    padding-left: 0%;
+}
+ 
+.todo-lists {
+    list-style-type: none;
+    margin: 5px;
+    border-bottom: 1px groove; 
+}
+
+#todo-checkbox {
+    margin-right: .4rem;
+
+}
+
+.list-title {
+    font-size: 20px;
+}
+
+.list-detail {
+    margin-left: 22.6px;
+    margin-top: 4px;
+    font-size: 1.2rem;
+}
+
+.list-date {
+    margin-left: 22.6px;
+    margin-top: 4px; 
+}

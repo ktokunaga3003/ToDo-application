@@ -1,5 +1,41 @@
-<div>
+<form [formGroup]="addAreaForm">
+    <div class="addlist-area">
+        <div class="todo-title">
+            <div class="label">
+                <span>タイトル：</span>
+            </div>
+            <input type="text" class="todo-input title" formControlName="title">
+        </div>
+        <div class="todo-detail">
+            <div class="label">
+                <span>詳細：</span>
+            </div>
+            <textarea name="todo-detail" class="todo-input detail" formControlName="detail"></textarea>
+        </div>
+        <div class="todo-date">
+            <div class="label">
+                <span>期限：</span>
+            </div>
+            <input type="date" class="todo-input date" formControlName="date">          
+        </div>
+        <div class="add-button-area">
+            <button class="add-button" (click)="addList()">追加</button>
+        </div>
+    </div>
+</form>
+<div class="showListArea">
     <ul>
-        <li>test</li>
+        <li class="todo-lists" *ngFor="let list of lists">
+            <div class="list-title">
+                <input type="checkbox" id="todo-checkbox" name="todo-checkbox" #check>
+                <label for="todo-checkbox">{{list.title}}</label>
+            </div>
+            <div class="list-detail">
+                <span>{{list.detail}}</span>
+            </div>
+            <div class="list-date">
+                <span>{{showListDate(list.date)}}</span>
+            </div>
+        </li>
     </ul>
 </div>
